@@ -1,0 +1,106 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <stddef.h>
+#include <locale.h>
+#include <ctype.h>
+
+#define TAM 10
+
+int opcao = 0, i = 0;
+
+struct cliente{
+    char nome[50];
+    int anoNascimento;
+    float montante;
+};
+
+typedef struct cliente cliente;
+
+cliente lista[TAM];
+
+void menu(){
+    system("cls");
+    do{
+        printf("\n-----------------------------CADASTRO DE CLIENTES-------------------------------");
+        printf("\n[ 1 ] - Incluir um novo cliente: ");
+        printf("\n[ 2 ] - Atualizar o montante de compras do cliente realizadas no mês corrente");
+        printf("\n[ 3 ] - Zerar todos os montantes de compras por ocasião da virada de mês");
+        printf("\n[ 4 ] - Exibir um montante de compras de um cliente específico");
+        printf("\n[ 5 ] - Sair");
+        printf("\nOpção: ");
+        scanf("%d", &opcao);
+        printf("----------------------------------------------------------------------------------");
+        switch(opcao){
+            case 1:
+                inclusaoCliente();
+                break;
+            case 2:
+                printf("Atualizaçao");
+                break;
+            case 3:
+                printf("Zerar todos os montantes");
+                break;
+            case 4:
+                //printf("Exibir um montante de compras de um cliente específico\n");
+                montanteCliente();
+                break;
+        }
+    }while(opcao != 5);
+}
+
+void inclusaoCliente(){
+    char cadastrar = 'E';
+    printf("\nInclusão de Clientes: \n");
+    do{
+        printf("Dados do %d cliente: \n",i+1);
+        printf("Nome: ");
+        scanf("%s", &lista[i].nome);
+        //lista[i].nome = strupr(lista[i].nome);
+        printf("Ano Nascimento: ");
+        scanf("%d", &lista[i].anoNascimento);
+        printf("Montante em R$");
+        scanf("%f", &lista[i].montante);
+        fflush(stdin);
+        i++;
+        printf("Cadastrar outro cliente S / N? ");
+        scanf("%c", &cadastrar);
+        cadastrar = toupper(cadastrar);
+        if(cadastrar == 'N'){
+            break;
+        }
+        if( i >= 10){
+            printf("Todo clientes já incluídos");
+        }
+    }while(i < 10 || cadastrar != 'S');
+}
+
+void montanteCliente(){
+    float soma = 0.0;
+    char procuraNome[40];
+    printf("\nInforme o nome para procurar montante: ");
+    scanf("%s", &procuraNome);
+    //procuraNome = strupr(procuraNome);
+    //nome = toupper(nome);
+    //opcao = toupper(opcao);
+    //procuraNome = toupper(procuraNome);
+    for(int i = 0; i < 10;i++){
+        if(!strcmp(lista[i].nome,procuraNome)){
+            soma += lista[i].montante;
+        }else{
+            printf("Cliente não encontrado");
+            break;
+        }
+    }
+    printf("\nValor total do montante R$%.2f", soma);
+}
+
+int main()
+{
+    //system("cls");
+        setlocale(LC_ALL, "Portuguese");
+        menu();
+        //printf("\nOpção: ");
+        //scanf("%d", &opcao);
+    return 0;
+}

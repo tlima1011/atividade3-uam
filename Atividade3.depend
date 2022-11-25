@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1669330929 source:c:\users\thiag\documents\ead - anhembi morumbi ciencias da computação\2º semestre\técnicas de programação\unidade 3\atividade3\atividade3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<stddef.h>
+	<locale.h>
+
