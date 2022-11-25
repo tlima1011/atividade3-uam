@@ -27,7 +27,8 @@ void menu(){
         printf("\n[ 2 ] - Atualizar o montante de compras do cliente realizadas no mês corrente");
         printf("\n[ 3 ] - Zerar todos os montantes de compras por ocasião da virada de mês");
         printf("\n[ 4 ] - Exibir um montante de compras de um cliente específico");
-        printf("\n[ 5 ] - Sair");
+        printf("\n[ 5 ] - Listar clientes");
+        printf("\n[ 6 ] - Sair");
         printf("\nOpção: ");
         scanf("%d", &opcao);
         printf("----------------------------------------------------------------------------------");
@@ -45,8 +46,11 @@ void menu(){
                 //printf("Exibir um montante de compras de um cliente específico\n");
                 montanteCliente();
                 break;
+            case 5:
+                listarClientes();
+                break;
         }
-    }while(opcao != 5);
+    }while(opcao != 6);
 }
 
 void inclusaoCliente(){
@@ -72,7 +76,7 @@ void inclusaoCliente(){
         if( i >= 10){
             printf("Todo clientes já incluídos");
         }
-    }while(i < 10 || cadastrar != 'S');
+    }while(i < TAM || cadastrar != 'S');
 }
 
 void montanteCliente(){
@@ -93,6 +97,14 @@ void montanteCliente(){
         }
     }
     printf("\nValor total do montante R$%.2f", soma);
+}
+
+listarClientes(){
+    printf("\n");
+    for(int i = 0; i < TAM;i++){
+        printf("Nome: %s\tAno Nascimento %d\tMontante R$%.2f\n", lista[i].nome, lista[i].anoNascimento, lista[i].montante);
+    }
+
 }
 
 int main()
