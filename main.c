@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include <locale.h>
 #include <ctype.h>
+#include <string.h>
 
 #define TAM 10
 
@@ -60,7 +61,8 @@ void inclusaoCliente(){
         printf("Dados do %d cliente: \n",i+1);
         printf("Nome: ");
         scanf("%s", &lista[i].nome);
-        //lista[i].nome = strupr(lista[i].nome);
+        //lista[i].nome = strupr(&lista[i].nome);
+        //lista[i].nome = toupper(lista[i].nome);
         printf("Ano Nascimento: ");
         scanf("%d", &lista[i].anoNascimento);
         printf("Montante em R$");
@@ -71,6 +73,7 @@ void inclusaoCliente(){
         scanf("%c", &cadastrar);
         cadastrar = toupper(cadastrar);
         if(cadastrar == 'N'){
+            system("cls");
             break;
         }
         if( i >= 10){
@@ -80,26 +83,22 @@ void inclusaoCliente(){
 }
 
 void montanteCliente(){
+    system("cls");
     float soma = 0.0;
     char procuraNome[40];
     printf("\nInforme o nome para procurar montante: ");
     scanf("%s", &procuraNome);
-    //procuraNome = strupr(procuraNome);
-    //nome = toupper(nome);
-    //opcao = toupper(opcao);
     //procuraNome = toupper(procuraNome);
-    for(int i = 0; i < 10;i++){
-        if(!strcmp(lista[i].nome,procuraNome)){
+    for(int i = 0; i < TAM;i++){
+        if(!strcmp(procuraNome, lista[i].nome)){
             soma += lista[i].montante;
-        }else{
-            printf("Cliente não encontrado");
-            break;
         }
     }
     printf("\nValor total do montante R$%.2f", soma);
 }
 
 listarClientes(){
+    system("cls");
     printf("\n");
     for(int i = 0; i < TAM;i++){
         printf("Nome: %s\tAno Nascimento %d\tMontante R$%.2f\n", lista[i].nome, lista[i].anoNascimento, lista[i].montante);
