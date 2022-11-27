@@ -25,7 +25,7 @@ void menu(){
     do{
         printf("\n-----------------------------CADASTRO DE CLIENTES-------------------------------");
         printf("\n[ 1 ] - Incluir um novo cliente ");
-        printf("\n[ 2 ] - Atualizar o montante de compras do cliente realizadas no mês corrente");
+        printf("\n[ 2 ] - Remover cliente");
         printf("\n[ 3 ] - Zerar todos os montantes de compras por ocasião da virada de mês");
         printf("\n[ 4 ] - Exibir um montante de compras de um cliente específico");
         printf("\n[ 5 ] - Listar clientes");
@@ -40,7 +40,7 @@ void menu(){
                 inclusaoCliente();
                 break;
             case 2:
-                printf("Remover cliente especifico");
+                apagarCliente();
                 break;
             case 3:
                 apagarMontate();
@@ -125,6 +125,24 @@ apagarMontate(){
     }else{
         printf("Nao havera exclusão");
     }
+}
+
+apagarCliente(){
+    system("cls");
+    char procuraNome[40];
+    printf("\nInforme o nome para procurar montante: ");
+    scanf("%s", &procuraNome);
+    for(int i = 0; i < TAM;i++){
+        if(!strcmp(procuraNome, lista[i].nome)){
+            //lista[i].nome = "---------------------------";
+            lista[i].anoNascimento = 0;
+            lista[i].montante = 0.0;
+        }
+    }
+}
+
+melhorComprador(){
+
 }
 
 int main()
