@@ -24,13 +24,14 @@ void menu(){
     system("cls");
     do{
         printf("\n-----------------------------CADASTRO DE CLIENTES-------------------------------");
-        printf("\n[ 1 ] - Incluir um novo cliente: ");
+        printf("\n[ 1 ] - Incluir um novo cliente ");
         printf("\n[ 2 ] - Atualizar o montante de compras do cliente realizadas no mês corrente");
         printf("\n[ 3 ] - Zerar todos os montantes de compras por ocasião da virada de mês");
         printf("\n[ 4 ] - Exibir um montante de compras de um cliente específico");
         printf("\n[ 5 ] - Listar clientes");
-        printf("\n[ 6 ] - Sair");
-        printf("\nOpção: ");
+        printf("\n[ 6 ] - Sair\n");
+        printf("----------------------------------------------------------------------------------\n");
+        printf("Opção: ");
         scanf("%d", &opcao);
         printf("----------------------------------------------------------------------------------");
         switch(opcao){
@@ -38,10 +39,10 @@ void menu(){
                 inclusaoCliente();
                 break;
             case 2:
-                printf("Atualizaçao");
+                printf("Remover cliente especifico");
                 break;
             case 3:
-                printf("Zerar todos os montantes");
+                apagarMontate();
                 break;
             case 4:
                 //printf("Exibir um montante de compras de um cliente específico\n");
@@ -58,7 +59,8 @@ void inclusaoCliente(){
     char cadastrar = 'E';
     printf("\nInclusão de Clientes: \n");
     do{
-        printf("Dados do %d cliente: \n",i+1);
+        system("cls");
+        printf("Dados do %do cliente: \n",i+1);
         printf("Nome: ");
         scanf("%s", &lista[i].nome);
         //lista[i].nome = strupr(&lista[i].nome);
@@ -101,9 +103,24 @@ listarClientes(){
     system("cls");
     printf("\n");
     for(int i = 0; i < TAM;i++){
-        printf("Nome: %s\tAno Nascimento %d\tMontante R$%.2f\n", lista[i].nome, lista[i].anoNascimento, lista[i].montante);
+        printf("Nome: %s\tAno Nascimento: %d\tMontante: R$%.2f\n", lista[i].nome, lista[i].anoNascimento, lista[i].montante);
     }
+}
 
+apagarMontate(){
+    system("cls");
+    char zerar;
+    fflush(stdin);
+    printf("Deseja zerar todos os montantes [S/N]");
+    scanf("%c", &zerar);
+    zerar = toupper(zerar);
+    if(zerar == 'S' || zerar == 's'){
+        for(int i = 0; i < TAM; i++){
+            lista[i].montante = 0.0;
+        }
+    }else{
+        printf("Nao havera exclusão");
+    }
 }
 
 int main()
