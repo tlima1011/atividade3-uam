@@ -29,7 +29,8 @@ void menu(){
         printf("\n[ 3 ] - Zerar todos os montantes de compras por ocasião da virada de mês");
         printf("\n[ 4 ] - Exibir um montante de compras de um cliente específico");
         printf("\n[ 5 ] - Listar clientes");
-        printf("\n[ 6 ] - Sair\n");
+        printf("\n[ 6 ] - Informar melhor comprador");
+        printf("\n[ 7 ] - Sair\n");
         printf("----------------------------------------------------------------------------------\n");
         printf("Opção: ");
         scanf("%d", &opcao);
@@ -51,8 +52,11 @@ void menu(){
             case 5:
                 listarClientes();
                 break;
+            case 6:
+                printf("Melhor comprador");
+                break;
         }
-    }while(opcao != 6);
+    }while(opcao != 7);
 }
 
 void inclusaoCliente(){
