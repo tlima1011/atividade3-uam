@@ -26,13 +26,13 @@ void menu(){
         printf("\n-----------------------------CADASTRO DE CLIENTES-------------------------------");
         printf("\n[ 1 ] - Incluir um novo cliente ");
         printf("\n[ 2 ] - Remover cliente");
-        printf("\n[ 3 ] - Zerar todos os montantes de compras por ocasião da virada de mês");
-        printf("\n[ 4 ] - Exibir um montante de compras de um cliente específico");
+        printf("\n[ 3 ] - Zerar todos os montantes de compras por ocasiï¿½o da virada de mï¿½s");
+        printf("\n[ 4 ] - Exibir um montante de compras de um cliente especï¿½fico");
         printf("\n[ 5 ] - Listar clientes");
         printf("\n[ 6 ] - Informar melhor comprador");
         printf("\n[ 7 ] - Sair\n");
         printf("----------------------------------------------------------------------------------\n");
-        printf("Opção: ");
+        printf("Opï¿½ï¿½o: ");
         scanf("%d", &opcao);
         printf("----------------------------------------------------------------------------------");
         switch(opcao){
@@ -46,7 +46,7 @@ void menu(){
                 apagarMontate();
                 break;
             case 4:
-                //printf("Exibir um montante de compras de um cliente específico\n");
+                //printf("Exibir um montante de compras de um cliente especï¿½fico\n");
                 montanteCliente();
                 break;
             case 5:
@@ -61,12 +61,13 @@ void menu(){
 
 void inclusaoCliente(){
     char cadastrar = 'E';
-    printf("\nInclusão de Clientes: \n");
+    printf("\nInclusï¿½o de Clientes: \n");
     do{
         system("cls");
-        printf("Dados do %do cliente: \n",i+1);
+        printf("Dados do %d o cliente: \n",i+1);
         printf("Nome: ");
         scanf("%s", &lista[i].nome);
+        fflush(stdin); // adicionei fflush(stdin) para que libere o teclado para proxima inserÃ§Ã£o de dados
         //lista[i].nome = strupr(&lista[i].nome);
         //lista[i].nome = toupper(lista[i].nome);
         printf("Ano Nascimento: ");
@@ -83,7 +84,7 @@ void inclusaoCliente(){
             break;
         }
         if( i >= 10){
-            printf("Todo clientes já incluídos");
+            printf("Todo clientes jï¿½ incluï¿½dos");
         }
     }while(i < TAM || cadastrar != 'S');
 }
@@ -118,12 +119,12 @@ apagarMontate(){
     printf("Deseja zerar todos os montantes [S/N]");
     scanf("%c", &zerar);
     zerar = toupper(zerar);
-    if(zerar == 'S' || zerar == 's'){
+    if(zerar == 'S' || zerar == 'N'){
         for(int i = 0; i < TAM; i++){
             lista[i].montante = 0.0;
         }
     }else{
-        printf("Nao havera exclusão");
+        printf("Nao havera exclusï¿½o");
     }
 }
 
@@ -150,7 +151,7 @@ int main()
     //system("cls");
         setlocale(LC_ALL, "Portuguese");
         menu();
-        //printf("\nOpção: ");
+        //printf("\nOpï¿½ï¿½o: ");
         //scanf("%d", &opcao);
     return 0;
 }
